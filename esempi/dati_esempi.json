@@ -1,0 +1,394 @@
+{
+  "ingredienti": [
+    { "id": 1, "nome": "Gin London Dry", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 2000.0, "soglia_allarme": 300.0, "costo_unitario": 0.022 },
+    { "id": 2, "nome": "Vodka Premium", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 2000.0, "soglia_allarme": 300.0, "costo_unitario": 0.02 },
+    { "id": 3, "nome": "Rum Bianco", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 250.0, "costo_unitario": 0.021 },
+    { "id": 4, "nome": "Rum Scuro Añejo", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.028 },
+    { "id": 5, "nome": "Tequila Blanco", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.026 },
+    { "id": 6, "nome": "Bourbon Whiskey", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 300.0, "costo_unitario": 0.025 },
+    { "id": 7, "nome": "Scotch Whisky", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.027 },
+    { "id": 8, "nome": "Cachaca", "categoria": "Distillati & Spirits", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.023 },
+    { "id": 9, "nome": "Campari Bitter", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 250.0, "costo_unitario": 0.018 },
+    { "id": 10, "nome": "Aperol", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 2000.0, "soglia_allarme": 400.0, "costo_unitario": 0.016 },
+    { "id": 11, "nome": "Vermouth Rosso", "categoria": "Vini & Vermouth", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 250.0, "costo_unitario": 0.015 },
+    { "id": 12, "nome": "Vermouth Dry", "categoria": "Vini & Vermouth", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.015 },
+    { "id": 13, "nome": "Triple Sec / Cointreau", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.024 },
+    { "id": 14, "nome": "Kahlúa / Liquore Caffè", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.022 },
+    { "id": 15, "nome": "Amaro del Capo", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1400.0, "soglia_allarme": 300.0, "costo_unitario": 0.02 },
+    { "id": 16, "nome": "Amaro Montenegro", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1400.0, "soglia_allarme": 300.0, "costo_unitario": 0.021 },
+    { "id": 17, "nome": "Sambuca", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.019 },
+    { "id": 18, "nome": "Baileys Irish Cream", "categoria": "Liquori & Bitter", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 250.0, "costo_unitario": 0.023 },
+    { "id": 19, "nome": "Prosecco DOC", "categoria": "Vini & Bollicine", "unita": "ml", "scorta": 3000.0, "soglia_allarme": 750.0, "costo_unitario": 0.012 },
+    { "id": 20, "nome": "Birra Bionda Spina / Bottiglia", "categoria": "Birre & Sidri", "unita": "ml", "scorta": 10000.0, "soglia_allarme": 2000.0, "costo_unitario": 0.005 },
+    { "id": 21, "nome": "Birra IPA Artigianale", "categoria": "Birre & Sidri", "unita": "ml", "scorta": 6000.0, "soglia_allarme": 1500.0, "costo_unitario": 0.009 },
+    { "id": 22, "nome": "Vino Rosso Chianti DOCG", "categoria": "Vini & Bollicine", "unita": "ml", "scorta": 3000.0, "soglia_allarme": 750.0, "costo_unitario": 0.014 },
+    { "id": 23, "nome": "Acqua Tonica Premium", "categoria": "Soft Drink & Mixer", "unita": "ml", "scorta": 4000.0, "soglia_allarme": 600.0, "costo_unitario": 0.006 },
+    { "id": 24, "nome": "Ginger Beer", "categoria": "Soft Drink & Mixer", "unita": "ml", "scorta": 3000.0, "soglia_allarme": 500.0, "costo_unitario": 0.008 },
+    { "id": 25, "nome": "Soda / Acqua Frizzante", "categoria": "Soft Drink & Mixer", "unita": "ml", "scorta": 3500.0, "soglia_allarme": 500.0, "costo_unitario": 0.002 },
+    { "id": 26, "nome": "Cola", "categoria": "Soft Drink & Mixer", "unita": "ml", "scorta": 4000.0, "soglia_allarme": 500.0, "costo_unitario": 0.004 },
+    { "id": 27, "nome": "Lemon Soda", "categoria": "Soft Drink & Mixer", "unita": "ml", "scorta": 3000.0, "soglia_allarme": 500.0, "costo_unitario": 0.005 },
+    { "id": 28, "nome": "Succo di Lime", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 1200.0, "soglia_allarme": 250.0, "costo_unitario": 0.008 },
+    { "id": 29, "nome": "Succo di Limone", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 1200.0, "soglia_allarme": 250.0, "costo_unitario": 0.007 },
+    { "id": 30, "nome": "Succo di Cranberry (Mirtillo)", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 300.0, "costo_unitario": 0.007 },
+    { "id": 31, "nome": "Succo d'Arancia", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 2000.0, "soglia_allarme": 400.0, "costo_unitario": 0.006 },
+    { "id": 32, "nome": "Succo d'Ananas", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 300.0, "costo_unitario": 0.006 },
+    { "id": 33, "nome": "Sciroppo di Zucchero", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 300.0, "costo_unitario": 0.005 },
+    { "id": 34, "nome": "Sciroppo di Granatina", "categoria": "Succhi & Preparati", "unita": "ml", "scorta": 1000.0, "soglia_allarme": 200.0, "costo_unitario": 0.006 },
+    { "id": 35, "nome": "Foglie di Menta Fresca", "categoria": "Frutta & Botaniche", "unita": "pz", "scorta": 80.0, "soglia_allarme": 15.0, "costo_unitario": 0.08 },
+    { "id": 36, "nome": "Caffè Espresso", "categoria": "Altro", "unita": "ml", "scorta": 1500.0, "soglia_allarme": 300.0, "costo_unitario": 0.01 }
+  ],
+  "drinks": [
+    {
+      "id": 1,
+      "nome": "Negroni Classico",
+      "categoria": "Aperitivi",
+      "prezzo": 8.0,
+      "descrizione": "L'autentico aperitivo italiano: Gin London Dry, Campari Bitter e Vermouth Rosso in parti uguali con scorza d'arancia.",
+      "ricetta": [
+        { "ingrediente_id": 1, "ingrediente": "Gin London Dry", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 9, "ingrediente": "Campari Bitter", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 11, "ingrediente": "Vermouth Rosso", "dose": 30.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Americano Classico",
+      "categoria": "Aperitivi",
+      "prezzo": 7.0,
+      "descrizione": "Campari Bitter, Vermouth Rosso e spruzzo di soda con fetta d'arancia fresca.",
+      "ricetta": [
+        { "ingrediente_id": 9, "ingrediente": "Campari Bitter", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 11, "ingrediente": "Vermouth Rosso", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 25, "ingrediente": "Soda / Acqua Frizzante", "dose": 40.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Aperol Spritz",
+      "categoria": "Aperitivi",
+      "prezzo": 6.5,
+      "descrizione": "Il re dell'aperitivo: Prosecco DOC, Aperol e soda con fetta d'arancia.",
+      "ricetta": [
+        { "ingrediente_id": 19, "ingrediente": "Prosecco DOC", "dose": 60.0, "unita": "ml" },
+        { "ingrediente_id": 10, "ingrediente": "Aperol", "dose": 40.0, "unita": "ml" },
+        { "ingrediente_id": 25, "ingrediente": "Soda / Acqua Frizzante", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Campari Spritz",
+      "categoria": "Aperitivi",
+      "prezzo": 6.5,
+      "descrizione": "Gusto deciso e amaricante: Prosecco DOC, Campari Bitter e spruzzo di soda.",
+      "ricetta": [
+        { "ingrediente_id": 19, "ingrediente": "Prosecco DOC", "dose": 60.0, "unita": "ml" },
+        { "ingrediente_id": 9, "ingrediente": "Campari Bitter", "dose": 40.0, "unita": "ml" },
+        { "ingrediente_id": 25, "ingrediente": "Soda / Acqua Frizzante", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Hugo Spritz",
+      "categoria": "Aperitivi",
+      "prezzo": 7.0,
+      "descrizione": "Rinfrescante e aromatico: Prosecco DOC, menta fresca, sciroppo e soda.",
+      "ricetta": [
+        { "ingrediente_id": 19, "ingrediente": "Prosecco DOC", "dose": 70.0, "unita": "ml" },
+        { "ingrediente_id": 25, "ingrediente": "Soda / Acqua Frizzante", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 35, "ingrediente": "Foglie di Menta Fresca", "dose": 2.0, "unita": "pz" }
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Gin Tonic Classico",
+      "categoria": "Long Drink",
+      "prezzo": 8.0,
+      "descrizione": "Gin London Dry e acqua tonica premium serviti con ghiaccio e scorza di limone.",
+      "ricetta": [
+        { "ingrediente_id": 1, "ingrediente": "Gin London Dry", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 23, "ingrediente": "Acqua Tonica Premium", "dose": 150.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Moscow Mule",
+      "categoria": "Long Drink",
+      "prezzo": 8.5,
+      "descrizione": "Vodka premium, ginger beer frizzante e succo di lime fresco servito nella tazza di rame.",
+      "ricetta": [
+        { "ingrediente_id": 2, "ingrediente": "Vodka Premium", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 24, "ingrediente": "Ginger Beer", "dose": 120.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "London Mule",
+      "categoria": "Long Drink",
+      "prezzo": 8.5,
+      "descrizione": "Variante con Gin London Dry aromatico, succo di lime e ginger beer.",
+      "ricetta": [
+        { "ingrediente_id": 1, "ingrediente": "Gin London Dry", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 24, "ingrediente": "Ginger Beer", "dose": 120.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Mojito Cubano",
+      "categoria": "Cocktail Pestati",
+      "prezzo": 8.5,
+      "descrizione": "Rum bianco, lime fresco pestato, menta, zucchero di canna e top di soda.",
+      "ricetta": [
+        { "ingrediente_id": 3, "ingrediente": "Rum Bianco", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 25, "ingrediente": "Soda / Acqua Frizzante", "dose": 40.0, "unita": "ml" },
+        { "ingrediente_id": 35, "ingrediente": "Foglie di Menta Fresca", "dose": 2.0, "unita": "pz" }
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Caipirinha",
+      "categoria": "Cocktail Pestati",
+      "prezzo": 8.5,
+      "descrizione": "Cachaca brasiliana originale pestata con lime e zucchero.",
+      "ricetta": [
+        { "ingrediente_id": 8, "ingrediente": "Cachaca", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Margarita",
+      "categoria": "Cocktail All Day",
+      "prezzo": 8.5,
+      "descrizione": "Tequila Blanco, Triple Sec e succo di lime fresco con caratteristica bordatura di sale.",
+      "ricetta": [
+        { "ingrediente_id": 5, "ingrediente": "Tequila Blanco", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 13, "ingrediente": "Triple Sec / Cointreau", "dose": 25.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 25.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Daiquiri",
+      "categoria": "Cocktail All Day",
+      "prezzo": 8.0,
+      "descrizione": "Rum bianco caraibico, succo di lime fresco e sciroppo di zucchero agitati nello shaker.",
+      "ricetta": [
+        { "ingrediente_id": 3, "ingrediente": "Rum Bianco", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Cuba Libre",
+      "categoria": "Long Drink",
+      "prezzo": 7.5,
+      "descrizione": "Rum bianco, cola ghiacciata e succo di lime fresco.",
+      "ricetta": [
+        { "ingrediente_id": 3, "ingrediente": "Rum Bianco", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 26, "ingrediente": "Cola", "dose": 150.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 15.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Vodka Lemon",
+      "categoria": "Long Drink",
+      "prezzo": 7.5,
+      "descrizione": "Vodka premium e Lemon Soda ghiacciata con fetta di limone.",
+      "ricetta": [
+        { "ingrediente_id": 2, "ingrediente": "Vodka Premium", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 27, "ingrediente": "Lemon Soda", "dose": 150.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Cosmopolitan",
+      "categoria": "Cocktail All Day",
+      "prezzo": 8.5,
+      "descrizione": "Vodka premium, Triple Sec, succo di lime e succo di mirtillo rosso americano.",
+      "ricetta": [
+        { "ingrediente_id": 2, "ingrediente": "Vodka Premium", "dose": 45.0, "unita": "ml" },
+        { "ingrediente_id": 13, "ingrediente": "Triple Sec / Cointreau", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 30, "ingrediente": "Succo di Cranberry (Mirtillo)", "dose": 30.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 16,
+      "nome": "Espresso Martini",
+      "categoria": "After Dinner",
+      "prezzo": 9.0,
+      "descrizione": "Vodka premium, liquore Kahlúa al caffè e caffè espresso appena estratto con crema soffice.",
+      "ricetta": [
+        { "ingrediente_id": 2, "ingrediente": "Vodka Premium", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 14, "ingrediente": "Kahlúa / Liquore Caffè", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 36, "ingrediente": "Caffè Espresso", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 10.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 17,
+      "nome": "Old Fashioned",
+      "categoria": "Cocktail All Day",
+      "prezzo": 9.0,
+      "descrizione": "Bourbon Whiskey americano, gocce di bitter, zucchero e spruzzo di soda con scorza d'arancia.",
+      "ricetta": [
+        { "ingrediente_id": 6, "ingrediente": "Bourbon Whiskey", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 10.0, "unita": "ml" },
+        { "ingrediente_id": 25, "ingrediente": "Soda / Acqua Frizzante", "dose": 10.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 18,
+      "nome": "Whiskey Sour",
+      "categoria": "Cocktail All Day",
+      "prezzo": 8.5,
+      "descrizione": "Bourbon Whiskey vellutato con succo di limone fresco e sciroppo di zucchero.",
+      "ricetta": [
+        { "ingrediente_id": 6, "ingrediente": "Bourbon Whiskey", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 29, "ingrediente": "Succo di Limone", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 19,
+      "nome": "Tequila Sunrise",
+      "categoria": "Long Drink",
+      "prezzo": 8.0,
+      "descrizione": "Tequila Blanco, succo d'arancia fresca e sfumatura rossa di sciroppo di granatina.",
+      "ricetta": [
+        { "ingrediente_id": 5, "ingrediente": "Tequila Blanco", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 31, "ingrediente": "Succo d'Arancia", "dose": 120.0, "unita": "ml" },
+        { "ingrediente_id": 34, "ingrediente": "Sciroppo di Granatina", "dose": 15.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 20,
+      "nome": "Black Russian",
+      "categoria": "After Dinner",
+      "prezzo": 8.0,
+      "descrizione": "Vodka premium e liquore al caffè Kahlúa serviti \"on the rocks\".",
+      "ricetta": [
+        { "ingrediente_id": 2, "ingrediente": "Vodka Premium", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 14, "ingrediente": "Kahlúa / Liquore Caffè", "dose": 25.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 21,
+      "nome": "White Russian",
+      "categoria": "After Dinner",
+      "prezzo": 8.5,
+      "descrizione": "Vodka premium, liquore al caffè e crema Baileys vellutata.",
+      "ricetta": [
+        { "ingrediente_id": 2, "ingrediente": "Vodka Premium", "dose": 50.0, "unita": "ml" },
+        { "ingrediente_id": 14, "ingrediente": "Kahlúa / Liquore Caffè", "dose": 25.0, "unita": "ml" },
+        { "ingrediente_id": 18, "ingrediente": "Baileys Irish Cream", "dose": 25.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 22,
+      "nome": "B-52 Shot",
+      "categoria": "Shot & Cicchetti",
+      "prezzo": 4.5,
+      "descrizione": "Famoso shot a tre strati: liquore al caffè, Baileys e Triple Sec.",
+      "ricetta": [
+        { "ingrediente_id": 14, "ingrediente": "Kahlúa / Liquore Caffè", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 18, "ingrediente": "Baileys Irish Cream", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 13, "ingrediente": "Triple Sec / Cointreau", "dose": 20.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 23,
+      "nome": "Shot Amaro del Capo",
+      "categoria": "Shot & Cicchetti",
+      "prezzo": 3.5,
+      "descrizione": "Servito rigorosamente a -20°C nel bicchierino ghiacciato.",
+      "ricetta": [
+        { "ingrediente_id": 15, "ingrediente": "Amaro del Capo", "dose": 40.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 24,
+      "nome": "Sambuca con la Mosca",
+      "categoria": "Shot & Cicchetti",
+      "prezzo": 3.5,
+      "descrizione": "Sambuca pura servita con tre chicchi di caffè tostato.",
+      "ricetta": [
+        { "ingrediente_id": 17, "ingrediente": "Sambuca", "dose": 40.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 25,
+      "nome": "Calice Prosecco Superiore DOC",
+      "categoria": "Vini & Bollicine",
+      "prezzo": 5.0,
+      "descrizione": "Bollicina veneta fresca e floreale, perfetta per brindare.",
+      "ricetta": [
+        { "ingrediente_id": 19, "ingrediente": "Prosecco DOC", "dose": 150.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 26,
+      "nome": "Calice Chianti Classico DOCG",
+      "categoria": "Vini & Bollicine",
+      "prezzo": 6.0,
+      "descrizione": "Vino rosso toscano corposo ed elegante.",
+      "ricetta": [
+        { "ingrediente_id": 22, "ingrediente": "Vino Rosso Chianti DOCG", "dose": 150.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 27,
+      "nome": "Birra Bionda Media",
+      "categoria": "Birre",
+      "prezzo": 5.0,
+      "descrizione": "Birra bionda alla spina da 40cl, fresca e dissetante.",
+      "ricetta": [
+        { "ingrediente_id": 20, "ingrediente": "Birra Bionda Spina / Bottiglia", "dose": 400.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 28,
+      "nome": "Birra Artigianale IPA",
+      "categoria": "Birre",
+      "prezzo": 6.5,
+      "descrizione": "Birra artigianale ambrata da 33cl con profumate note agrumate e luppolate.",
+      "ricetta": [
+        { "ingrediente_id": 21, "ingrediente": "Birra IPA Artigianale", "dose": 330.0, "unita": "ml" }
+      ]
+    },
+    {
+      "id": 29,
+      "nome": "Virgin Mojito (Analcolico)",
+      "categoria": "Analcolici",
+      "prezzo": 6.0,
+      "descrizione": "Lime pestato, menta fresca, zucchero di canna e ginger beer frizzante.",
+      "ricetta": [
+        { "ingrediente_id": 28, "ingrediente": "Succo di Lime", "dose": 30.0, "unita": "ml" },
+        { "ingrediente_id": 33, "ingrediente": "Sciroppo di Zucchero", "dose": 25.0, "unita": "ml" },
+        { "ingrediente_id": 24, "ingrediente": "Ginger Beer", "dose": 120.0, "unita": "ml" },
+        { "ingrediente_id": 35, "ingrediente": "Foglie di Menta Fresca", "dose": 2.0, "unita": "pz" }
+      ]
+    },
+    {
+      "id": 30,
+      "nome": "Florida Fruit (Analcolico)",
+      "categoria": "Analcolici",
+      "prezzo": 6.0,
+      "descrizione": "Mix dissetante di succo d'arancia, ananas, limone fresco e goccia di granatina.",
+      "ricetta": [
+        { "ingrediente_id": 31, "ingrediente": "Succo d'Arancia", "dose": 60.0, "unita": "ml" },
+        { "ingrediente_id": 32, "ingrediente": "Succo d'Ananas", "dose": 60.0, "unita": "ml" },
+        { "ingrediente_id": 29, "ingrediente": "Succo di Limone", "dose": 20.0, "unita": "ml" },
+        { "ingrediente_id": 34, "ingrediente": "Sciroppo di Granatina", "dose": 15.0, "unita": "ml" }
+      ]
+    }
+  ]
+}

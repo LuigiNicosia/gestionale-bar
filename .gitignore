@@ -1,0 +1,46 @@
+# ==========================================
+# File da ignorare per Python & macOS & IDE
+# ==========================================
+
+# 1. Byte-compiled / Python cache (file temporanei compilati)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 2. Ambiente virtuale Python (librerie esterne)
+venv/
+env/
+.venv/
+ENV/
+
+# 3. File di sistema macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# 4. Impostazioni editor e IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# 5. Log e file temporanei
+*.log
+*.tmp
+*.bak
+*.swp
+
+# 6. File con credenziali sensibili e password locali (SICUREZZA REPO PUBBLICO)
+config_local*.py
+.env
+.env.*
+*.pem
+*.key
+
+# 7. Dati locali e file generati
+*.sqlite
+*.sqlite3
+*.db
+instance/
+__pycache__/

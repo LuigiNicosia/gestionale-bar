@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarMaster OS — Gestionale Bar & Magazzino Cocktail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="role-dipendente">
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand-logo">
+        <div class="logo-icon">🍸</div>
+        <div class="brand-text">
+          <span class="brand-title">BarMaster <span class="badge-pro">PRO</span></span>
+          <span class="brand-subtitle">Gestionale Bar & Calcolo Giacenze</span>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="tab-ordini">
+        <i class="fa-solid fa-bell-concierge"></i>
+        <span>Nuova Comanda</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-coda">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Coda Ordini</span>
+        <span class="counter-badge" id="queue-badge-count">0</span>
+      </button>
+      <button class="nav-btn owner-only" data-tab="tab-magazzino">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        <span>Magazzino & Alcolici</span>
+      </button>
+      <button class="nav-btn owner-only" data-tab="tab-drink">
+        <i class="fa-solid fa-martini-glass-citrus"></i>
+        <span>Drink & Ricette</span>
+      </button>
+      <button class="nav-btn owner-only" data-tab="tab-statistiche">
+        <i class="fa-solid fa-chart-pie"></i>
+        <span>Report & Cassa</span>
+      </button>
+    </nav>
+    <div class="header-right">
+      <div class="system-clock" id="live-clock">--:--:--</div>
+      <button class="btn-theme-toggle" id="btn-toggle-theme" title="Cambia Palette Colori">
+        <i class="fa-solid fa-palette"></i>
+        <span id="theme-btn-text">Azzurro & Bianco</span>
+      </button>
+      <div class="role-control" id="role-control-container">
+        <div class="role-badge" id="current-role-badge">
+          <i class="fa-solid fa-user"></i>
+          <span id="role-text">Dipendente</span>
+        </div>
+        <button class="btn-role-toggle" id="btn-toggle-role" title="Cambia Ruolo">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span id="role-btn-text">Accedi come Titolare</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="app-main">
+    <section id="tab-ordini" class="tab-pane active">
+      <div class="order-layout">
+        <div class="catalog-container">
+          <div class="order-topbar card-glass">
+            <div class="input-group-row">
+              <div class="input-block">
+                <label for="order-table-input"><i class="fa-solid fa-chair"></i> Numero Tavolo / Postazione *</label>
+                <div class="quick-table-wrapper">
+                  <input type="text" id="order-table-input" placeholder="Es. Tavolo 4, Banco, Dehors 2..." autocomplete="off">
+                  <div class="table-quick-picks">
+                    <button type="button" class="btn-pill-pick" data-val="Tavolo 1">T1</button>
+                    <button type="button" class="btn-pill-pick" data-val="Tavolo 2">T2</button>
+                    <button type="button" class="btn-pill-pick" data-val="Tavolo 3">T3</button>
+                    <button type="button" class="btn-pill-pick" data-val="Tavolo 4">T4</button>
+                    <button type="button" class="btn-pill-pick" data-val="Tavolo 5">T5</button>
+                    <button type="button" class="btn-pill-pick" data-val="Banco">Banco</button>
+                    <button type="button" class="btn-pill-pick" data-val="Dehors 1">D1</button>
+                  </div>
+                </div>
+              </div>
+              <div class="input-block">
+                <label for="order-staff-input"><i class="fa-solid fa-user-tag"></i> Cameriere / Staff</label>
+                <input type="text" id="order-staff-input" value="Cameriere 1" placeholder="Nome cameriere">
+              </div>
+              <div class="input-block flex-grow">
+                <label for="order-notes-input"><i class="fa-solid fa-pen"></i> Note per il Barman (opzionale)</label>
+                <input type="text" id="order-notes-input" placeholder="Es. Negroni poco amaro, ghiaccio a parte...">
+              </div>
+            </div>
+          </div>
+          <div class="filter-bar">
+            <div class="category-pills" id="drink-category-filters">
+              <button class="cat-pill active" data-cat="all">Tutti i Drink</button>
+              <button class="cat-pill" data-cat="Cocktail">Cocktail</button>
+              <button class="cat-pill" data-cat="Aperitivi">Aperitivi</button>
+              <button class="cat-pill" data-cat="Long Drink">Long Drink</button>
+              <button class="cat-pill" data-cat="Fuori Menu">Fuori Menu</button>
+              <button class="cat-pill" data-cat="Altro">Altro</button>
+            </div>
+            <div class="filter-bar-right">
+              <button type="button" class="btn btn-secondary btn-custom-drink" id="btn-open-custom-drink" title="Crea un drink speciale o fuori menu per il cliente">
+                <i class="fa-solid fa-wand-magic-sparkles text-accent"></i>
+                <span>+ Drink Fuori Menu</span>
+              </button>
+              <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-drink-input" placeholder="Cerca drink per nome...">
+              </div>
+            </div>
+          </div>
+          <div class="drinks-grid" id="drinks-catalog-grid">
+            <div class="loading-state">
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+              <span>Caricamento menu e calcolo giacenze in corso...</span>
+            </div>
+          </div>
+        </div>
+        <aside class="order-summary-sidebar card-glass">
+          <div class="sidebar-header">
+            <h3><i class="fa-solid fa-receipt"></i> Comanda in Corso</h3>
+            <span class="active-table-display" id="active-table-label">Nessun tavolo selezionato</span>
+          </div>
+          <div class="cart-items-list" id="cart-items-container">
+            <div class="empty-cart-state">
+              <i class="fa-solid fa-wine-bottle"></i>
+              <p>Nessun drink selezionato</p>
+              <small>Seleziona i drink dal menu a sinistra per comporre la comanda del tavolo.</small>
+            </div>
+          </div>
+          <div class="cart-footer">
+            <div class="summary-line">
+              <span>Totale Drink:</span>
+              <strong id="cart-total-drinks">0</strong>
+            </div>
+            <div class="summary-line total-price-line">
+              <span>Totale Comanda:</span>
+              <strong id="cart-total-price">€ 0.00</strong>
+            </div>
+            <div class="cart-actions">
+              <button class="btn btn-secondary" id="btn-clear-cart" title="Svuota selezione">
+                <i class="fa-solid fa-trash-can"></i> Svuota
+              </button>
+              <button class="btn btn-primary btn-send-order" id="btn-submit-order">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Invia Comanda alla Coda</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section id="tab-coda" class="tab-pane">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-fire-burner"></i> Coda Ordini Barman & Sala</h2>
+          <p class="section-desc">Monitor comande in tempo reale: visualizza per tavolo, dosi ricetta e stato di preparazione.</p>
+        </div>
+        <div class="queue-toolbar">
+          <div class="status-filters" id="queue-status-filters">
+            <button class="filter-pill active" data-status="all">Tutti</button>
+            <button class="filter-pill" data-status="in_attesa">⏳ In Attesa</button>
+            <button class="filter-pill" data-status="in_preparazione">🍸 In Preparazione</button>
+            <button class="filter-pill" data-status="servito">✅ Serviti</button>
+            <button class="filter-pill" data-status="pagato">💰 Pagati</button>
+          </div>
+          <button class="btn btn-secondary btn-icon" id="btn-refresh-queue" title="Aggiorna Adesso">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </div>
+      </div>
+      <div class="orders-queue-grid" id="orders-queue-container">
+        <div class="loading-state">
+          <i class="fa-solid fa-circle-notch fa-spin"></i>
+          <span>Caricamento coda ordini...</span>
+        </div>
+      </div>
+    </section>
+    <section id="tab-magazzino" class="tab-pane">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-warehouse"></i> Magazzino & Giacenze Materie Prime</h2>
+          <p class="section-desc">Gestisci le scorte di alcolici, distillati, bitter e mixer. Le quantità scalano automaticamente a ogni ordine.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary" id="btn-view-logs">
+            <i class="fa-solid fa-clock-rotate-left"></i> Registro Movimenti
+          </button>
+          <button class="btn btn-primary" id="btn-open-add-ingredient">
+            <i class="fa-solid fa-plus"></i> Nuova Materia Prima
+          </button>
+        </div>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card card-glass clickable-card" id="card-filter-all" title="Clicca per visualizzare tutte le materie prime">
+          <div class="metric-icon gold"><i class="fa-solid fa-bottle-droplet"></i></div>
+          <div class="metric-content">
+            <span class="metric-title">Materie Prime Registrate</span>
+            <span class="metric-val" id="metric-total-ingredients">0</span>
+            <span class="metric-sub-action"><i class="fa-solid fa-list-ul"></i> Mostra tutte</span>
+          </div>
+        </div>
+        <div class="metric-card card-glass clickable-card" id="card-filter-low-stock" title="Clicca per eseguire la query e mostrare solo quelli in esaurimento">
+          <div class="metric-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="metric-content">
+            <span class="metric-title">In Esaurimento / Sotto Soglia</span>
+            <span class="metric-val" id="metric-low-stock">0</span>
+            <span class="metric-sub-action"><i class="fa-solid fa-filter"></i> Filtra solo in esaurimento</span>
+          </div>
+        </div>
+        <div class="metric-card card-glass">
+          <div class="metric-icon green"><i class="fa-solid fa-coins"></i></div>
+          <div class="metric-content">
+            <span class="metric-title">Valore Stimato Scorte</span>
+            <span class="metric-val" id="metric-stock-value">€ 0.00</span>
+            <span class="metric-sub-action">Giacenza totale bar</span>
+          </div>
+        </div>
+      </div>
+      <div class="filter-alert-banner" id="inventory-filter-banner" style="display: none;">
+        <div class="filter-alert-text">
+          <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+          <span>Filtro Query Attivo: visualizzazione di sole materie prime <strong>in esaurimento o sotto soglia</strong></span>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-reset-low-filter">
+          <i class="fa-solid fa-rotate-left"></i> Mostra Tutte le Scorte
+        </button>
+      </div>
+      <div class="table-container card-glass">
+        <div class="table-toolbar">
+          <div class="inventory-status-pills" id="inventory-status-filters">
+            <button class="filter-pill active" data-stock-filter="all">Tutte le scorte</button>
+            <button class="filter-pill" data-stock-filter="low_stock">
+              <i class="fa-solid fa-triangle-exclamation text-warning"></i> In Esaurimento
+            </button>
+            <button class="filter-pill" data-stock-filter="out_of_stock">
+              <i class="fa-solid fa-ban text-danger"></i> Esauriti (0 ml)
+            </button>
+          </div>
+          <div class="toolbar-right-filters">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="search-inventory-input" placeholder="Cerca alcolico o materia prima...">
+            </div>
+            <div class="category-select-wrapper">
+              <select id="filter-inventory-cat">
+                <option value="all">Tutte le categorie</option>
+                <option value="Distillati">Distillati</option>
+                <option value="Liquori & Bitter">Liquori & Bitter</option>
+                <option value="Vini & Bollicine">Vini & Bollicine</option>
+                <option value="Soft Drink & Mixer">Soft Drink & Mixer</option>
+                <option value="Succhi & Preparati">Succhi & Preparati</option>
+                <option value="Frutta & Botaniche">Frutta & Botaniche</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <table class="custom-table" id="inventory-table">
+          <thead>
+            <tr>
+              <th>Ingrediente</th>
+              <th>Categoria</th>
+              <th>Giacenza Attuale</th>
+              <th>Livello Scorta</th>
+              <th>Costo Unit.</th>
+              <th>Valore Scorta</th>
+              <th>Soglia Allarme</th>
+              <th>Stato</th>
+              <th>Azioni Rapide</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-table-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section id="tab-drink" class="tab-pane">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-blender"></i> Menu Drink & Dosi Ricette</h2>
+          <p class="section-desc">Crea e modifica i cocktail definendo la quantità esatta di alcol e ingredienti per calcolare la disponibilità residua.</p>
+        </div>
+        <div>
+          <button class="btn btn-primary" id="btn-open-add-drink">
+            <i class="fa-solid fa-plus"></i> Crea Nuovo Drink
+          </button>
+        </div>
+      </div>
+      <div class="drinks-management-grid" id="drinks-management-container">
+      </div>
+    </section>
+    <section id="tab-statistiche" class="tab-pane">
+      <div class="section-header">
+        <div>
+          <h2><i class="fa-solid fa-chart-line"></i> Report Vendite & Statistiche</h2>
+          <p class="section-desc">Panoramica dell'attività economica del locale e analisi consumi.</p>
+        </div>
+      </div>
+      <div class="stats-overview-grid">
+        <div class="stat-box card-glass">
+          <div class="stat-label"><i class="fa-solid fa-cash-register"></i> Incasso Oggi</div>
+          <div class="stat-number gold-text" id="stat-revenue-today">€ 0.00</div>
+          <div class="stat-sub" id="stat-orders-today">0 comande oggi</div>
+        </div>
+        <div class="stat-box card-glass">
+          <div class="stat-label"><i class="fa-solid fa-sack-dollar text-success"></i> Guadagno Netto Oggi</div>
+          <div class="stat-number text-success" id="stat-profit-today">€ 0.00</div>
+          <div class="stat-sub" id="stat-margin-today">Margine stimato: 0%</div>
+        </div>
+        <div class="stat-box card-glass">
+          <div class="stat-label"><i class="fa-solid fa-vault"></i> Incasso Totale Storico</div>
+          <div class="stat-number" id="stat-revenue-total">€ 0.00</div>
+          <div class="stat-sub" id="stat-orders-total">0 comande complessive</div>
+        </div>
+        <div class="stat-box card-glass">
+          <div class="stat-label"><i class="fa-solid fa-fire"></i> Drink Più Venduto</div>
+          <div class="stat-number text-accent" id="stat-top-drink-name">--</div>
+          <div class="stat-sub" id="stat-top-drink-count">0 porzioni erogate</div>
+        </div>
+        <div class="stat-box card-glass">
+          <div class="stat-label"><i class="fa-solid fa-hourglass-half"></i> Comande in Lavorazione</div>
+          <div class="stat-number" id="stat-pending-orders">0</div>
+          <div class="stat-sub">al momento in coda</div>
+        </div>
+      </div>
+      <div class="stats-details-row">
+        <div class="card-glass flex-1">
+          <h3><i class="fa-solid fa-ranking-star"></i> Classifica Drink Più Venduti</h3>
+          <div class="table-container mini-table">
+            <table class="custom-table" id="top-drinks-table">
+              <thead>
+                <tr>
+                  <th>Drink</th>
+                  <th>Quantità Venduta</th>
+                  <th>Incasso Generato</th>
+                </tr>
+              </thead>
+              <tbody id="top-drinks-body">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-glass flex-1">
+          <h3><i class="fa-solid fa-triangle-exclamation text-warning"></i> Materie Prime Urgenti da Riordinare</h3>
+          <div class="low-stock-list" id="low-stock-alert-list">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="modal-overlay" id="modal-pin">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-lock"></i> Area Riservata Titolare</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">Inserisci il PIN di sicurezza per accedere al Magazzino, modifica Drink & Ricette e Statistiche di Cassa.</p>
+        <div class="pin-display-wrapper">
+          <input type="password" id="input-owner-pin" maxlength="8" placeholder="Inserisci PIN (Default: 1234)" autocomplete="off">
+        </div>
+        <div id="pin-error-msg" class="pin-error-box" style="display: none;"></div>
+        <div class="pin-keypad">
+          <button type="button" class="btn-pin" data-num="1">1</button>
+          <button type="button" class="btn-pin" data-num="2">2</button>
+          <button type="button" class="btn-pin" data-num="3">3</button>
+          <button type="button" class="btn-pin" data-num="4">4</button>
+          <button type="button" class="btn-pin" data-num="5">5</button>
+          <button type="button" class="btn-pin" data-num="6">6</button>
+          <button type="button" class="btn-pin" data-num="7">7</button>
+          <button type="button" class="btn-pin" data-num="8">8</button>
+          <button type="button" class="btn-pin" data-num="9">9</button>
+          <button type="button" class="btn-pin pin-clear" id="btn-pin-clear">C</button>
+          <button type="button" class="btn-pin" data-num="0">0</button>
+          <button type="button" class="btn-pin pin-enter" id="btn-pin-confirm"><i class="fa-solid fa-check"></i></button>
+        </div>
+        <div class="pin-hint"><i class="fa-solid fa-circle-info"></i> PIN predefinito iniziale: <strong>1234</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-restock">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-truck-ramp-box"></i> Carico Merce Veloce</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p>Aggiungi quantità in arrivo dal fornitore per: <strong id="restock-item-name" class="text-accent"></strong></p>
+        <input type="hidden" id="restock-item-id">
+        <div class="form-group">
+          <label>Quantità da aggiungere (+ <span id="restock-unit-label">ml</span>)</label>
+          <input type="number" id="restock-amount-input" step="any" placeholder="Es. 700 o 1000">
+          <div class="quick-qty-pills">
+            <button type="button" class="btn-qty-pill" data-add="500">+500 ml</button>
+            <button type="button" class="btn-qty-pill" data-add="700">+700 ml (1 bottiglia)</button>
+            <button type="button" class="btn-qty-pill" data-add="1000">+1000 ml (1L)</button>
+            <button type="button" class="btn-qty-pill" data-add="1400">+1400 ml (2 bottiglie)</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Causale carico (opzionale)</label>
+          <input type="text" id="restock-reason-input" value="Carico Fornitore" placeholder="Es. Consegna fornitore / Fattura">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Annulla</button>
+        <button class="btn btn-primary" id="btn-confirm-restock">Conferma Carico</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-ingredient">
+    <div class="modal-card modal-medium">
+      <div class="modal-header">
+        <h3 id="modal-ingredient-title"><i class="fa-solid fa-bottle-droplet text-accent"></i> Nuova Materia Prima</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="ingredient-id-input">
+        <div class="form-group">
+          <label for="ing-name-input"><i class="fa-solid fa-tag"></i> Nome Alcolico o Ingrediente *</label>
+          <input type="text" id="ing-name-input" placeholder="Es. Gin Bombay Sapphire, Campari, Aperol, Prosecco..." required>
+          <span class="form-hint">Nome visibile in magazzino e usato per comporre le ricette</span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ing-category-input"><i class="fa-solid fa-layer-group"></i> Categoria</label>
+            <select id="ing-category-input">
+              <option value="Distillati">Distillati (Gin, Vodka, Rum...)</option>
+              <option value="Liquori & Bitter">Liquori & Bitter (Campari, Aperol...)</option>
+              <option value="Vini & Bollicine">Vini & Bollicine (Prosecco...)</option>
+              <option value="Soft Drink & Mixer">Soft Drink & Mixer (Tonica, Cola...)</option>
+              <option value="Succhi & Preparati">Succhi & Preparati (Lime, Sciroppi...)</option>
+              <option value="Frutta & Botaniche">Frutta & Botaniche (Menta...)</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ing-unit-input"><i class="fa-solid fa-scale-balanced"></i> Unità di Misura</label>
+            <select id="ing-unit-input">
+              <option value="ml">ml (millilitri liquidi)</option>
+              <option value="cl">cl (centilitri)</option>
+              <option value="pz">pz (porzioni / pezzi)</option>
+              <option value="g">g (grammi)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ing-stock-input"><i class="fa-solid fa-boxes-stacked"></i> Quantità Attuale in Scorta *</label>
+            <div class="input-with-badge">
+              <input type="number" id="ing-stock-input" step="any" placeholder="Es. 1400" required>
+              <span class="input-badge" id="badge-unit-stock">ml</span>
+            </div>
+            <span class="form-hint">Giacenza fisica totale presente nel bar</span>
+          </div>
+          <div class="form-group">
+            <label for="ing-threshold-input"><i class="fa-solid fa-bell"></i> Soglia Allarme Minimo</label>
+            <div class="input-with-badge">
+              <input type="number" id="ing-threshold-input" step="any" value="200" placeholder="Es. 200">
+              <span class="input-badge" id="badge-unit-thresh">ml</span>
+            </div>
+            <span class="form-hint">Avviso automatico quando scende sotto questa soglia</span>
+          </div>
+        </div>
+        <div class="bottle-calc-box">
+          <div class="bottle-calc-title"><i class="fa-solid fa-calculator"></i> Calcolatore Rapido da Bottiglia Fornitore</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="calc-bottle-price">Prezzo Bottiglia (€)</label>
+              <input type="number" id="calc-bottle-price" step="0.01" placeholder="Es. 18.00">
+            </div>
+            <div class="form-group">
+              <label for="calc-bottle-volume">Capacità Bottiglia (ml)</label>
+              <input type="number" id="calc-bottle-volume" step="10" placeholder="Es. 700 o 1000">
+            </div>
+          </div>
+          <div class="calc-result-preview" id="calc-result-preview">
+            Inserisci prezzo e volume per calcolare il costo esatto al ml
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ing-cost-input"><i class="fa-solid fa-euro-sign"></i> Costo Unitario di Acquisto (€/ml o €/pz) *</label>
+          <div class="input-with-badge">
+            <input type="number" id="ing-cost-input" step="0.0001" placeholder="Es. 0.0250">
+            <span class="input-badge" id="badge-unit-cost">€/ml</span>
+          </div>
+          <span class="form-hint">Usato per calcolare in automatico il costo di ogni drink e il tuo guadagno netto</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Annulla</button>
+        <button class="btn btn-primary" id="btn-save-ingredient">
+          <i class="fa-solid fa-floppy-disk"></i> Salva Materia Prima
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-drink">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3 id="modal-drink-title"><i class="fa-solid fa-martini-glass"></i> Configurazione Drink & Ricetta</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="drink-id-input">
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label for="drink-name-input"><i class="fa-solid fa-martini-glass-citrus"></i> Nome del Drink *</label>
+            <input type="text" id="drink-name-input" placeholder="Es. Negroni Sbagliato, Paloma, Mojito..." required>
+          </div>
+          <div class="form-group">
+            <label for="drink-category-input"><i class="fa-solid fa-layer-group"></i> Categoria</label>
+            <select id="drink-category-input">
+              <option value="Cocktail">Cocktail</option>
+              <option value="Aperitivi">Aperitivi</option>
+              <option value="Long Drink">Long Drink</option>
+              <option value="Shot">Shot</option>
+              <option value="Analcolici">Analcolici</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="drink-price-input"><i class="fa-solid fa-euro-sign"></i> Prezzo (€) *</label>
+            <input type="number" id="drink-price-input" step="0.5" placeholder="8.00" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="drink-desc-input">Descrizione / Note di Servizio</label>
+          <input type="text" id="drink-desc-input" placeholder="Ingredienti, guarnizione, bicchiere consigliato...">
+        </div>
+        <div class="recipe-composer-box">
+          <div class="recipe-header">
+            <h4><i class="fa-solid fa-vial"></i> Composizione Ricetta & Dosi Alcolici</h4>
+            <span class="recipe-hint">Aggiungi gli alcolici/ingredienti e i relativi quantitativi usati per calcolare quante porzioni potrai servire.</span>
+          </div>
+          <div class="recipe-rows-container" id="recipe-rows-container">
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-add-recipe-row">
+            <i class="fa-solid fa-plus"></i> Aggiungi Ingrediente alla Ricetta
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Annulla</button>
+        <button class="btn btn-primary" id="btn-save-drink">Salva Drink e Ricetta</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="modal-logs">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-clock-rotate-left"></i> Registro Movimenti Magazzino</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="table-container">
+          <table class="custom-table" id="stock-logs-table">
+            <thead>
+              <tr>
+                <th>Data & Ora</th>
+                <th>Materia Prima</th>
+                <th>Variazione</th>
+                <th>Giacenza Risultante</th>
+                <th>Causale</th>
+              </tr>
+            </thead>
+            <tbody id="stock-logs-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Chiudi</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-custom-drink">
+    <div class="modal-card modal-medium">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-wand-magic-sparkles text-accent"></i> Drink Fuori Menu / Personalizzato</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">Componi al volo una richiesta speciale o un drink fuori menu. Le scorte scalano regolarmente dal magazzino!</p>
+        <div class="form-row">
+          <div class="form-group flex-2">
+            <label for="custom-drink-name"><i class="fa-solid fa-tag"></i> Nome Drink Speciale *</label>
+            <input type="text" id="custom-drink-name" placeholder="Es. Mezcal Negroni, Gin Hendrick's & Pepe..." required>
+          </div>
+          <div class="form-group flex-1">
+            <label for="custom-drink-price"><i class="fa-solid fa-euro-sign"></i> Prezzo al Cliente (€) *</label>
+            <input type="number" id="custom-drink-price" step="0.50" value="8.50" placeholder="Es. 9.00" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="custom-drink-desc"><i class="fa-solid fa-pen"></i> Note o Preferenze Cliente</label>
+          <input type="text" id="custom-drink-desc" placeholder="Es. Senza ghiaccio, twist di arancia, bicchiere tumbler...">
+        </div>
+
+        <div class="recipe-composer-box">
+          <div class="recipe-header">
+            <h4><i class="fa-solid fa-flask-vial"></i> Ingredienti & Dosi del Drink</h4>
+            <span class="recipe-hint">Seleziona le bottiglie o mixer e indica i ml/pz usati.</span>
+          </div>
+          <div class="recipe-rows-container" id="custom-drink-recipe-rows">
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-add-custom-recipe-row">
+            <i class="fa-solid fa-plus"></i> Aggiungi Alcolico / Mixer
+          </button>
+        </div>
+
+        <div class="profit-calculator-card" id="custom-profit-card">
+          <div class="profit-calc-item">
+            <span class="profit-calc-label"><i class="fa-solid fa-boxes-stacked"></i> Costo Materie:</span>
+            <strong class="profit-calc-val" id="custom-calc-cost">€ 0.00</strong>
+          </div>
+          <div class="profit-calc-item">
+            <span class="profit-calc-label"><i class="fa-solid fa-hand-holding-dollar"></i> Prezzo Vendita:</span>
+            <strong class="profit-calc-val" id="custom-calc-price">€ 8.50</strong>
+          </div>
+          <div class="profit-calc-item highlight">
+            <span class="profit-calc-label"><i class="fa-solid fa-sack-dollar"></i> Tuo Guadagno:</span>
+            <strong class="profit-calc-val text-success" id="custom-calc-profit">€ 8.50 (+100%)</strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Annulla</button>
+        <button class="btn btn-primary" id="btn-confirm-custom-drink">
+          <i class="fa-solid fa-cart-plus"></i> Aggiungi alla Comanda
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-edit-order">
+    <div class="modal-card modal-medium">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-pen-to-square text-accent"></i> Modifica Comanda Inviata</h3>
+        <button class="modal-close" data-close-modal><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">Il cliente vuole cambiare drink prima che sia preparato? Modifica le quantità o sostituisci i drink. Il magazzino si riallinea automaticamente!</p>
+
+        <input type="hidden" id="edit-order-id">
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="edit-order-table"><i class="fa-solid fa-chair"></i> Tavolo / Postazione</label>
+            <input type="text" id="edit-order-table" required>
+          </div>
+          <div class="form-group flex-2">
+            <label for="edit-order-notes"><i class="fa-solid fa-comment"></i> Note Comanda</label>
+            <input type="text" id="edit-order-notes" placeholder="Note per il barman...">
+          </div>
+        </div>
+
+        <div class="edit-order-section">
+          <div class="edit-order-section-title">
+            <i class="fa-solid fa-list-check"></i> Drink nella Comanda
+          </div>
+          <div class="edit-order-items-list" id="edit-order-items-container">
+          </div>
+        </div>
+
+        <div class="add-drink-to-edit-box">
+          <div class="edit-order-section-title">
+            <i class="fa-solid fa-plus-circle"></i> Aggiungi o Sostituisci un Drink
+          </div>
+          <div class="add-drink-edit-row">
+            <select id="edit-order-select-drink" class="flex-2">
+              <option value="">-- Seleziona un drink dal menu --</option>
+            </select>
+            <input type="number" id="edit-order-add-qty" min="1" value="1" class="qty-small-input">
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-add-drink-to-edit">
+              <i class="fa-solid fa-plus"></i> Aggiungi
+            </button>
+          </div>
+        </div>
+
+        <div class="edit-order-total-bar">
+          <span>Nuovo Totale Comanda:</span>
+          <strong id="edit-order-total-display">€ 0.00</strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-close-modal>Annulla</button>
+        <button class="btn btn-primary" id="btn-save-order-changes">
+          <i class="fa-solid fa-floppy-disk"></i> Salva Modifiche Comanda
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast-container" id="toast-container"></div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
