@@ -4,14 +4,15 @@
   --bg-card: #161e2e;
   --bg-card-hover: #1e283d;
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-focus: #f59e0b;
+  --border-focus: #3b82f6;
 
-  --primary: #f59e0b;
-  --primary-hover: #d97706;
-  --primary-glow: rgba(245, 158, 11, 0.25);
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-glow: rgba(59, 130, 246, 0.25);
 
   --accent-cyan: #06b6d4;
-  --accent-purple: #8b5cf6;
+  --accent-purple: #2563eb;
+  --accent-blue: #3b82f6;
   --success: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
@@ -30,7 +31,7 @@
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
   --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
   --shadow-lg: 0 16px 36px rgba(0,0,0,0.6);
-  --shadow-glow: 0 0 20px rgba(245, 158, 11, 0.2);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.25);
 
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -75,14 +76,14 @@ body {
 
 .logo-icon {
   font-size: 1.8rem;
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
 }
 
 .brand-title {
@@ -99,7 +100,7 @@ body {
 .badge-pro {
   font-size: 0.65rem;
   background: var(--primary);
-  color: #000;
+  color: #ffffff;
   font-weight: 800;
   padding: 2px 6px;
   border-radius: 4px;
@@ -144,9 +145,9 @@ body {
 }
 
 .nav-btn.active {
-  color: #000;
+  color: #fff;
   background: var(--primary);
-  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
 }
 
 .counter-badge {
@@ -160,7 +161,7 @@ body {
 }
 
 .nav-btn.active .counter-badge {
-  background: #000;
+  background: #fff;
   color: var(--primary);
 }
 
@@ -229,14 +230,14 @@ body {
 }
 
 body.role-titolare .role-badge {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(59, 130, 246, 0.15);
   color: var(--primary);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .btn-role-toggle {
   background: var(--primary);
-  color: #000;
+  color: #fff;
   border: none;
   font-size: 0.8rem;
   font-weight: 700;
@@ -307,7 +308,7 @@ body.role-dipendente .owner-only::after {
 
 .btn-primary {
   background: var(--primary);
-  color: #000;
+  color: #fff;
 }
 .btn-primary:hover {
   background: var(--primary-hover);
@@ -438,7 +439,7 @@ body.role-dipendente .owner-only::after {
 .btn-pill-pick:hover,
 .btn-pill-pick.active {
   background: var(--primary);
-  color: #000;
+  color: #fff;
   border-color: var(--primary);
 }
 
@@ -478,7 +479,7 @@ body.role-dipendente .owner-only::after {
 }
 
 .cat-pill.active {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(59, 130, 246, 0.15);
   border-color: var(--primary);
   color: var(--primary);
 }
@@ -535,7 +536,7 @@ body.role-dipendente .owner-only::after {
 
 .drink-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(245, 158, 11, 0.35);
+  border-color: rgba(59, 130, 246, 0.4);
   box-shadow: var(--shadow-md);
 }
 
@@ -704,7 +705,7 @@ body.role-dipendente .owner-only::after {
 
 .btn-add-to-cart:hover:not(:disabled) {
   background: var(--primary);
-  color: #000;
+  color: #fff;
   border-color: var(--primary);
 }
 
@@ -938,7 +939,7 @@ body.role-dipendente .owner-only::after {
 
 .filter-pill.active {
   background: var(--primary);
-  color: #000;
+  color: #fff;
   border-color: var(--primary);
 }
 
@@ -1145,7 +1146,7 @@ body.role-dipendente .owner-only::after {
 }
 
 .metric-icon.gold {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(59, 130, 246, 0.15);
   color: var(--primary);
 }
 .metric-icon.red {
@@ -1609,7 +1610,7 @@ body.role-dipendente .owner-only::after {
 }
 
 .pin-clear { color: var(--danger); }
-.pin-enter { background: var(--primary); color: #000; }
+.pin-enter { background: var(--primary); color: #fff; }
 .pin-enter:hover { background: var(--primary-hover); }
 
 .pin-hint {
@@ -1664,7 +1665,7 @@ body.role-dipendente .owner-only::after {
 .form-group select:focus {
   border-color: var(--primary);
   background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
 .form-row {
@@ -1735,8 +1736,8 @@ body.role-dipendente .owner-only::after {
 
 .clickable-card#card-filter-all.active-filter {
   border-color: var(--primary);
-  background: rgba(245, 158, 11, 0.1);
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.25);
 }
 
 .metric-sub-action {
@@ -1754,7 +1755,7 @@ body.role-dipendente .owner-only::after {
 }
 
 .filter-alert-banner {
-  background: linear-gradient(90deg, rgba(239, 68, 68, 0.15), rgba(245, 158, 11, 0.12));
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.15), rgba(59, 130, 246, 0.12));
   border: 1px solid rgba(239, 68, 68, 0.35);
   border-radius: var(--radius-md);
   padding: 0.85rem 1.25rem;
@@ -1809,7 +1810,7 @@ body.role-dipendente .owner-only::after {
 }
 .btn-qty-pill:hover {
   background: var(--primary);
-  color: #000;
+  color: #fff;
 }
 
 @media (max-width: 600px) {
@@ -2636,7 +2637,7 @@ body.theme-azzurro .edit-order-row {
 
 .btn-qty-mini:hover {
   background: var(--primary);
-  color: #000;
+  color: #fff;
 }
 
 body.theme-azzurro .btn-qty-mini {
@@ -2701,8 +2702,8 @@ body.theme-azzurro .add-drink-to-edit-box {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: var(--radius-md);
   font-size: 1rem;
   font-weight: 700;

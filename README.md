@@ -31,7 +31,7 @@
 - Gestione anagrafica ingredienti, inserimento nuove ricette, modifica prezzi e consultazione dati economici.
 
 ### 🎨 6. Switch Temi & Palette Grafiche
-- **Doppia interfaccia grafica**: possibilità di passare istantaneamente dal sofisticato tema scuro **Dark Lounge** al tema chiaro e moderno **Azzurro & Bianco**.
+- **Doppia interfaccia grafica**: possibilità di passare istantaneamente dal sofisticato tema scuro **Dark Cobalt Lounge** (con moderni accenti blu zaffiro ed elettrico) al tema chiaro **Azzurro & Bianco**.
 - Memorizzazione persistente della scelta grafica sul browser tramite `localStorage`.
 
 ---
